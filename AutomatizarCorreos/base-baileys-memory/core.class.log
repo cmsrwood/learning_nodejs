@@ -1,0 +1,171 @@
+[handleMsg]:  {
+  key: {
+    remoteJid: '573142758305@s.whatsapp.net',
+    fromMe: false,
+    id: 'CDD29494B8E708090EBA335178BCF9EE',
+    participant: undefined
+  },
+  messageTimestamp: 1717192081,
+  pushName: 'Fidel Smoke',
+  broadcast: false,
+  message: Message {
+    conversation: 'Ola',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Ola',
+  from: '573142758305'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_7590bbf9-d705-470a-88d0-ef6d76dad118',
+  keyword: 'key_901e767b-a97c-4b56-9cc3-df2ad3e4d9f1',
+  answer: 'Bienvenido al chat bot',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: 'b8ed1f027c2dfe4fc76a6db4c18cb432'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_90aadc52-0056-4fab-81d7-a087b1e5083e',
+  keyword: 'ans_7590bbf9-d705-470a-88d0-ef6d76dad118',
+  answer: 'Escriba su cuadrilla: ',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'f345a0bb6973e5d1e2291438fa9c3d89'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '573142758305@s.whatsapp.net',
+    fromMe: false,
+    id: 'E8A246053F0923253688612F856B93FB',
+    participant: undefined
+  },
+  messageTimestamp: 1717192088,
+  pushName: 'Fidel Smoke',
+  broadcast: false,
+  message: Message {
+    conversation: 'Cuadrilla 2',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  status: 4,
+  body: 'Cuadrilla 2',
+  from: '573142758305'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_d5b32964-5a77-4f1c-9cd8-2b7abc947385',
+  keyword: 'ans_90aadc52-0056-4fab-81d7-a087b1e5083e',
+  answer: 'Escriba su nombre: ',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '6fe88f57394160bc5b920cd73f4db66a'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '573142758305@s.whatsapp.net',
+    fromMe: false,
+    id: 'EAC7D8C72DC164123F88CAD737AA9EBA',
+    participant: undefined
+  },
+  messageTimestamp: 1717192093,
+  pushName: 'Fidel Smoke',
+  broadcast: false,
+  message: Message {
+    conversation: 'Fidel',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Fidel',
+  from: '573142758305'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_fcee0bae-073e-4e66-867e-f295c68cc348',
+  keyword: 'ans_d5b32964-5a77-4f1c-9cd8-2b7abc947385',
+  answer: '*Nombre:*\n\n*Cuadrilla:*\n\n¿Esta informacion es correcta?',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: 'e479dd82e0c2640d6010bdd2c9669263'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '573142758305@s.whatsapp.net',
+    fromMe: false,
+    id: 'C114EA64B621C300887FC9392EFDCD00',
+    participant: undefined
+  },
+  messageTimestamp: 1717192103,
+  pushName: 'Fidel Smoke',
+  broadcast: false,
+  message: Message {
+    conversation: 'Si',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Si',
+  from: '573142758305'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_ee37194e-c4b3-4cd0-a4cf-0a3849a43752',
+  keyword: 'key_6aa96cf2-659f-4bae-9398-041067e61219',
+  answer: 'Gracias por contestar',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '2dd0ec2a9e0030e36111f9115fb16d00'
+}
