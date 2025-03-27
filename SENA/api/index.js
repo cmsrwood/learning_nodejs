@@ -50,7 +50,6 @@ app.get('/api/usuarios', (request, response) => {
         });
 });
 
-
 app.get('/api/usuarios/:id', (req, res) => {
     const { id } = req.params
     const query = `SELECT * FROM usuarios WHERE id_usuario=${id}`
@@ -70,17 +69,68 @@ app.get('/api/usuarios/:id', (req, res) => {
 
 app.post('/api/usuarios/agregar/', (request, response) => {
     const { nombre, email, clave } = request.body;
-    conexion.query("INSERT INTO usuarios(nombre, email, clave) VALUES (?,?,?)",
-        [nombre, email, clave],
-        (error, results) => {
-            if (error)
-                throw error;
-            response.status(201).json({ message: "Item añadido correctamente" });
-        });
+
+    const q = 'SELECT * FROM usuarios WHERE email = ?';
+    const values = [
+        email
+    ]
+    conexion.query(q, values, (error, results) => {
+        if (error) {
+            console.error(error.message);
+            return response.status(500).json({ message: "Hubo un error al intentar agregar el usuario." });
+        }
+        else if (results.length > 0) {
+            response.status(409).json({ message: "El usuario ya existe." });
+        }
+        else {
+            conexion.query("INSERT INTO usuarios(nombre, email, clave) VALUES (?,?,?)",
+                [nombre, email, clave],
+                (error, results) => {
+                    if (error)
+                        throw error;
+                    response.status(201).json({ message: "Item añadido correctamente" });
+                });
+        }
+    })
+
+});
+
+app.put('/api/usuarios/actualizar/:id', (req, res) => {
+    const { id } = req.params
+    const { nombre, email, clave } = req.body;
+
+    const qUsuario = 'SELECT * FROM usuarios WHERE id = ?';
+
+    conexion.query(qUsuario, [id], (error, results) => {
+        if (error) {
+            console.error(error.message);
+            return res.status(500).json({ message: "Hubo un error al intentar actualizar el usuario." });
+        } else if (results.length === 0) {
+            res.status(404).json({ message: `No se encontró un usuario con el ID ${id}.` });
+        }
+        else {
+            const query = `UPDATE usuarios SET nombre = ?, email = ?, clave = ? WHERE id = ?`;
+            const values = [
+                nombre ? nombre : results[0].nombre,
+                email ? email : results[0].email,
+                clave ? clave : results[0].clave,
+                id];
+            conexion.query(query, values, (error, results) => {
+                if (error) {
+                    console.error(error.message);
+                    return res.status(500).json({ message: "Hubo un error al intentar actualizar el usuario." });
+                } else if (results.affectedRows > 0) {
+                    res.json({ message: `Usuario con ID ${id} actualizado correctamente.` });
+                } else {
+                    res.status(404).json({ message: `No se encontró un usuario con el ID ${id}.` });
+                }
+            });
+        }
+    });
 });
 
 app.delete('/api/usuarios/eliminar/:id', (req, res) => {
-    const { id } = req.params; 
+    const { id } = req.params;
     const query = `DELETE FROM usuarios WHERE id_usuario = ?`;
 
     conexion.query(query, [id], (error, results) => {
@@ -93,40 +143,6 @@ app.delete('/api/usuarios/eliminar/:id', (req, res) => {
             res.json({ message: `Usuario con ID ${id} eliminado correctamente.` });
         } else {
             res.status(404).json({ message: `No se encontró un usuario con el ID ${id}.` });
-        }
-    });
-});
-
-app.put('/api/usuarios/actualizar/:id', (req, res) => {
-    const { id } = req.params
-    const { nombre, email, clave } = req.body;
-
-    if (!nombre || !email || !clave) {
-        return res.status(400).json({ message: "Todos los campos son obligatorios" });
-    }
-
-    const qUsuario = 'SELECT * FROM usuarios WHERE id_usuario = ?';
-
-    conexion.query(qUsuario, [id], (error, results) => {
-        if (error) {
-            console.error(error.message);
-            return res.status(500).json({ message: "Hubo un error al intentar actualizar el usuario." });
-        } else if (results.length === 0) {
-            res.status(404).json({ message: `No se encontró un usuario con el ID ${id}.` });
-        }
-        else {
-            const query = `UPDATE usuarios SET nombre = ?, email = ?, clave = ? WHERE id_usuario = ?`;
-
-            conexion.query(query, [nombre, email, clave, id], (error, results) => {
-                if (error) {
-                    console.error(error.message);
-                    return res.status(500).json({ message: "Hubo un error al intentar actualizar el usuario." });
-                } else if (results.affectedRows > 0) {
-                    res.json({ message: `Usuario con ID ${id} actualizado correctamente.` });
-                } else {
-                    res.status(404).json({ message: `No se encontró un usuario con el ID ${id}.` });
-                }
-            });
         }
     });
 });
