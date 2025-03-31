@@ -1,0 +1,22 @@
+CREATE DATABASE proyecto_flutter;
+USE proyecto_flutter;
+
+CREATE TABLE usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE clientes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL,
+  apellidos VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE empleados (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL,
+  apellidos VARCHAR(50) NOT NULL,
+  correo VARCHAR(100) NOT NULL,
+  telefono VARCHAR(15) NOT NULL
+);
